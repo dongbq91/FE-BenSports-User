@@ -1,0 +1,124 @@
+<header class="header header--1" data-sticky="true">
+    <div class="topbar" >
+        <div class="container" >
+            <div class="row" >
+                <div class="col-lg-5 col-md-12 col-12">
+                    <!-- Top Left -->
+                    <div class="top-left">
+                        <ul class="list-main">
+                            <li><i class="ti-headphone-alt"></i> 0969698320</li>
+                            <li><i class="ti-email"></i> support.bensport@gmail.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-7 col-md-12 col-12">
+                    <div class="right-content">
+                        <ul class="list-main">
+                            <li><a [routerLink]="['/contact']"><i class="ti-location-pin"></i> Địa chỉ</a></li>
+                            <li><i class="ti-alarm-clock"></i> <a href="#">Sản phẩm</a></li>
+                            <li><i class="ti-user"></i>  <a [routerLink]="['/profile']">Thông tin người dùng</a></li>
+                            <li *ngIf="isLogin">
+                                <i class="ti-power-off"></i>
+                                <a href="javascript:void(0);" (click)="logout()">Đăng xuất</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="header__top">
+        <div class="ps-container">
+            <div class="header__left">
+                <div class="menu--product-categories">
+                    <div class="menu__toggle"><i class="icon-menu"></i><span> Danh Mục Sản Phẩm</span></div>
+                    <div class="menu__content">
+                        <ul class="menu--dropdown">
+                            <li *ngFor="let item of categories">
+                                <a [routerLink]="['/by-category/'+item.categoryId]">{{item.categoryName}}</a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                </div><a class="ps-logo" [routerLink]="['/home']"><img src="img/logo_new3.png" alt="" /></a>
+            </div>
+            <div class="header__center">
+                <form class="ps-form--quick-search" action="#" method="get">
+                    <input class="form-control" (keyup)="search($event)" type="text" placeholder="Tìm kiếm theo tên sản phẩm..." id="input-search" />
+                    <button [routerLink]="['/search/'+keyword]">Tìm</button>
+                </form>
+            </div>
+           
+            <div class="header__right">
+                <div class="header__actions">
+                    <!-- wishlist -->
+                    <a class="header__extra" [routerLink]="['/favorites']">
+                        <i class="icon-heart"></i>
+                        <span>
+                            <i>{{totalFavoriteItem}}</i>
+                        </span>
+                    </a>
+                    <a class="header__extra" [routerLink]="['/cart']">
+                        <i class="icon-bag2"></i>
+                        <span>
+                            <i>{{totalCartItem}}</i>
+                        </span>
+                    </a>
+                    <div class="ps-block--user-header">
+                        <div class="menu--product-categories">
+                            <div class="ps-block__left">
+                                <a class="header__extra" href="javascript:void(0);">
+                                    <i class="icon-user"></i>
+                                </a>
+                            </div>
+                            <div class="menu__content">
+                                <ul class="menu--dropdown">
+                                    <li *ngIf="isLogin">
+                                        <a [routerLink]="['/profile']">Thông tin người dùng</a>
+                                    </li>
+                                    <li *ngIf="!isLogin">
+                                        <a [routerLink]="['/sign-form']">Đăng nhập &amp; Đăng ký</a>
+                                    </li>
+                                    <li *ngIf="isLogin">
+                                        <a href="javascript:void(0);" (click)="logout()">Đăng xuất</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navigation">
+        
+        <div class="header-inner" style="background-color: #E6E6FA; ">
+            <div class="container" >
+                <div class="cat-nav-head">
+                    <div class="row">
+                       
+                        <div class="col-lg-9 col-12" >
+                            <div class="menu-area" >
+                                <nav class="navbar navbar-expand-lg" >
+                                    <div class="navbar-collapse" >	
+                                        <div class="nav-inner"  >	
+                                            <ul class="nav main-menu menu navbar-nav"  >
+                                                    <li class="active"><a [routerLink]="['/home']" style="color: black;">Trang chủ</a></li>
+                                                    <li><a [routerLink]="['/all-product']" style="color: black;">Sản Phẩm<span class="new">Mới</span></a>
+                                                    </li>
+                                                    
+                                                    <li *ngFor="let item of categories"><a [routerLink]="['/by-category/'+item.categoryId]" style="color: black;">{{item.categoryName}}</a></li>
+                                                    <li><a [routerLink]="['/about']" style="color: black;">Giới thiệu</a></li>									
+                                                    <li><a [routerLink]="['/contact']" style="color: black;">Liên hệ</a></li>
+                                                </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
